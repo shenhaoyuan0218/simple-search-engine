@@ -1,8 +1,6 @@
-## 2. search_engine.py
 import string
 import math
 
-# English stop words
 stopwords = {"the", "a", "an", "of", "is", "in", "and", "or", "to", "for", "be"}
 
 def preprocess(text: str):
@@ -32,27 +30,12 @@ def build_inverted_index(documents):
                 index[word] = []
             index[word].append((doc_id, cnt))
     return index
-
-def compute_tf(word, doc_words):
-    """TF: term frequency"""
-    return doc_words.count(word) / len(doc_words)
-
-def compute_idf(word, index, total_docs):
-    """IDF: inverse document frequency"""
-    doc_contained = len(index.get(word, []))
-    return math.log(total_docs / (1 + doc_contained))
-
 def get_doc_vectors(documents, index):
-    """Generate TF-IDF vector for every document"""
-    total_docs = len(documents)
     doc_vecs = {}
     for doc_name, words in documents.items():
         vec = {}
-        unique_words = set(words)
-        for w in unique_words:
-            tf = compute_tf(w, words)
-            idf = compute_idf(w, index, total_docs)
-            vec[w] = tf * idf
+        for w in words:
+            vec[w] = vec.get(w,0)+1
         doc_vecs[doc_name] = vec
     return doc_vecs
 
