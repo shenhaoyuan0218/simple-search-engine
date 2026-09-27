@@ -1,3 +1,4 @@
+# simple-search-engine
 # Simple Local Text Search Engine
 A lightweight pure-Python local document retrieval engine.
 It builds inverted index, computes TF-IDF vector representation for documents, and ranks search results by cosine similarity.
