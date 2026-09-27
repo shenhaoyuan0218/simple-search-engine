@@ -55,3 +55,10 @@ def main():
 
 if __name__ == "__main__":
     main()
+print("\n==== Search Result ====")
+if len(results) == 0:
+    print("No matching documents found.")
+else:
+    for name, score in results:
+        print(f"{name} | similarity: {score:.4f}")
+print()
