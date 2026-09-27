@@ -1,5 +1,4 @@
 ## 2. search_engine.py
-```python
 import string
 import math
 
