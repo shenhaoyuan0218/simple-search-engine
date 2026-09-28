@@ -4,7 +4,6 @@ import os
 
 app = Flask(__name__)
 
-# 一次性加载文档、索引、向量（和main.py逻辑完全一致）
 folder = "test_docs"
 docs = {}
 if os.path.exists(folder):
@@ -19,7 +18,6 @@ if os.path.exists(folder):
 index = build_inverted_index(docs)
 doc_vecs = get_doc_vectors(docs, index)
 
-# 简单网页模板，内嵌在代码里，不用额外html文件
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
