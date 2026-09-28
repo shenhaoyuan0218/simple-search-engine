@@ -2,7 +2,6 @@ import os
 from search_engine import preprocess, build_inverted_index, get_doc_vectors, cosine_similarity
 
 def load_documents(folder_path):
-    """Read all txt files from target folder"""
     docs = {}
     for filename in os.listdir(folder_path):
         if filename.endswith(".txt"):
@@ -46,7 +45,6 @@ def main():
             score = cosine_similarity(query_vec, vec)
             if score > 0:
                 results.append((doc_name, score))
-        # sort from high similarity to low
         results.sort(key=lambda x:x[1], reverse=True)
         print("\n==== Search Result ====")
         for name, score in results:
