@@ -4,11 +4,7 @@ import math
 stopwords = {"the", "a", "an", "of", "is", "in", "and", "or", "to", "for", "be"}
 
 def preprocess(text: str):
-    """
-    Text preprocessing: lowercase, remove punctuation, split words, filter stopwords
-    """
     text = text.lower()
-    # delete all punctuation
     translator = str.maketrans('', '', string.punctuation)
     text = text.translate(translator)
     words = text.split()
@@ -16,10 +12,6 @@ def preprocess(text: str):
     return words
 
 def build_inverted_index(documents):
-    """
-    Build inverted index: word -> list[(doc_name, word_count)]
-    documents: dict, key: filename, value: list of words
-    """
     index = {}
     for doc_id, words in documents.items():
         word_count = {}
@@ -40,7 +32,6 @@ def get_doc_vectors(documents, index):
     return doc_vecs
 
 def cosine_similarity(vec1, vec2):
-    """Calculate cosine similarity between two sparse vectors"""
     dot_product = 0
     mag1 = 0
     mag2 = 0
